@@ -1,25 +1,138 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="e5q-fa-7mG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Grocery List-->
+        <scene sceneID="S9T-vA-obq">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tableViewController id="Wv9-b6-9Bl" customClass="ViewController" customModule="GroceryLists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yvT-t6-n08">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O1W-2U-YOe">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1W-2U-YOe" id="UOf-xh-Yhe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wv9-b6-9Bl" id="6W8-3z-rqu"/>
+                            <outlet property="delegate" destination="Wv9-b6-9Bl" id="N3P-Wa-LR9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Grocery List" id="svc-RF-r8L">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="LlQ-d9-mas">
+                            <connections>
+                                <segue destination="1cz-eC-afb" kind="show" identifier="PlusButtonSegue" id="lVf-nv-BJK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oPN-Nf-kme" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="987" y="884"/>
+        </scene>
+        <!--Please Type An Item-->
+        <scene sceneID="qio-zY-K97">
+            <objects>
+                <viewController id="1cz-eC-afb" customClass="TypingView" customModule="GroceryLists" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fIJ-XF-5GV"/>
+                        <viewControllerLayoutGuide type="bottom" id="yap-sb-CUI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ojP-dI-k84">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Groceries Here" textAlignment="natural" minimumFontSize="24" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Gqe-Gp-Odp">
+                                <rect key="frame" x="20" y="71" width="289" height="30"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="289" id="IBS-hh-FJ7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Kh-V5-G7T">
+                                <rect key="frame" x="37" y="194" width="496" height="386"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAN-uU-jq7">
+                                <rect key="frame" x="317" y="71" width="67" height="30"/>
+                                <state key="normal" title="Add More"/>
+                                <connections>
+                                    <action selector="AddMoreAction:" destination="1cz-eC-afb" eventType="touchUpInside" id="Cx4-yn-sHJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Kh-V5-G7T" firstAttribute="leading" secondItem="ojP-dI-k84" secondAttribute="leadingMargin" constant="17" id="9wi-xF-MrY"/>
+                            <constraint firstItem="pAN-uU-jq7" firstAttribute="leading" secondItem="Gqe-Gp-Odp" secondAttribute="trailing" constant="8" id="Uff-KE-5kJ"/>
+                            <constraint firstItem="Gqe-Gp-Odp" firstAttribute="top" secondItem="pAN-uU-jq7" secondAttribute="top" id="XLe-8r-zzb"/>
+                            <constraint firstItem="4Kh-V5-G7T" firstAttribute="top" secondItem="Gqe-Gp-Odp" secondAttribute="bottom" constant="93" id="aAu-mJ-gQ9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Kh-V5-G7T" secondAttribute="trailing" constant="47" id="aLc-ri-gCi"/>
+                            <constraint firstItem="Gqe-Gp-Odp" firstAttribute="top" secondItem="fIJ-XF-5GV" secondAttribute="bottom" constant="51" id="brI-Cs-QTU"/>
+                            <constraint firstItem="Gqe-Gp-Odp" firstAttribute="leading" secondItem="ojP-dI-k84" secondAttribute="leadingMargin" id="mys-gp-qwg"/>
+                            <constraint firstAttribute="bottom" secondItem="4Kh-V5-G7T" secondAttribute="bottom" constant="20" symbolic="YES" id="pgT-I0-76c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Please Type An Item" id="Yxv-d8-eRy">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="UrX-qP-9hy">
+                            <connections>
+                                <action selector="CancelAction:" destination="1cz-eC-afb" id="QmW-0W-J46"/>
+                                <segue destination="Wv9-b6-9Bl" kind="show" id="dVn-cf-maH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fgr-Y4-yPF">
+                            <connections>
+                                <action selector="SaveAction:" destination="1cz-eC-afb" id="2zv-lC-ZVJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="CancelButton" destination="UrX-qP-9hy" id="wSP-MC-222"/>
+                        <outlet property="GroceryField" destination="Gqe-Gp-Odp" id="f7v-D8-cOT"/>
+                        <outlet property="MoreButton" destination="pAN-uU-jq7" id="qes-cG-ftf"/>
+                        <outlet property="SaveButton" destination="fgr-Y4-yPF" id="qIE-1H-O4c"/>
+                        <outlet property="TextUpdate" destination="4Kh-V5-G7T" id="cDp-fP-Qd6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vqo-ii-t0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="884"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zBM-kL-AjI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e5q-fa-7mG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Eb4-Qj-uwJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Wv9-b6-9Bl" kind="relationship" relationship="rootViewController" id="cNf-tw-vOP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fxS-yU-ANA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="175" y="884"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dVn-cf-maH"/>
+    </inferredMetricsTieBreakers>
 </document>
