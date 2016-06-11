@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="O1W-2U-YOe">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="O1W-2U-YOe">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1W-2U-YOe" id="UOf-xh-Yhe">
@@ -92,20 +92,21 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="UrX-qP-9hy">
                             <connections>
                                 <action selector="CancelAction:" destination="1cz-eC-afb" id="QmW-0W-J46"/>
-                                <segue destination="Wv9-b6-9Bl" kind="show" id="dVn-cf-maH"/>
+                                <segue destination="Wv9-b6-9Bl" kind="show" identifier="Cancel" id="dVn-cf-maH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fgr-Y4-yPF">
                             <connections>
                                 <action selector="SaveAction:" destination="1cz-eC-afb" id="2zv-lC-ZVJ"/>
+                                <segue destination="Wv9-b6-9Bl" kind="show" identifier="Save" id="dqV-Ga-u8g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="CancelButton" destination="UrX-qP-9hy" id="wSP-MC-222"/>
+                        <outlet property="CancelButton" destination="UrX-qP-9hy" id="UEh-l9-XFy"/>
                         <outlet property="GroceryField" destination="Gqe-Gp-Odp" id="f7v-D8-cOT"/>
                         <outlet property="MoreButton" destination="pAN-uU-jq7" id="qes-cG-ftf"/>
-                        <outlet property="SaveButton" destination="fgr-Y4-yPF" id="qIE-1H-O4c"/>
+                        <outlet property="SaveButton" destination="fgr-Y4-yPF" id="hnv-KU-eX3"/>
                         <outlet property="TextUpdate" destination="4Kh-V5-G7T" id="cDp-fP-Qd6"/>
                     </connections>
                 </viewController>

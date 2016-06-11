@@ -10,50 +10,43 @@ import Foundation
 import Firebase
 
 
-struct MyDateEntry {
+struct MyItemEntry {
     
     //let key: String!
     let name: String!
-    let date: NSDate!
+    let item: String!
     
     
-    init(name: String, date: NSDate, key: String = "") {
+    init(name: String, item: String, key: String = "") {
         //self.key = key
         self.name = name
-        self.date = date
+        self.item = item
     }
     
     
     init(snapshot: FIRDataSnapshot) {
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZ"
-        dateStringFormatter.timeZone = NSTimeZone(name: "UTC")
+
         
         
         //key = snapshot.key
         name = snapshot.value!["name"] as! String
-        let dateStr = snapshot.value!["date"] as! String
-        date = dateStringFormatter.dateFromString(dateStr)
+        item = snapshot.value!["item"] as! String
     }
     
     
     init(snapshot: Dictionary<String,AnyObject>) {
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZ"
-        dateStringFormatter.timeZone = NSTimeZone(name: "UTC")
         
         
         //key = snapshot.key
         name = snapshot["name"] as! String
-        let dateStr = snapshot["date"] as! String
-        date = dateStringFormatter.dateFromString(dateStr)
+        item = snapshot["item"] as! String
     }
     
     
     func toAnyObject() -> AnyObject {
         return [
             "name": name,
-            "date": date.description,
+            "item": item,
         ]
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F5F2FFE1D0A3E6900ABE777 /* TypingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5F2FFD1D0A3E6900ABE777 /* TypingView.swift */; };
+		3F5F30001D0B77DF00ABE777 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F5F2FFF1D0B77DF00ABE777 /* GoogleService-Info.plist */; };
 		3F6210181D07A5040035CDA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6210171D07A5040035CDA5 /* AppDelegate.swift */; };
 		3F62101A1D07A5040035CDA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6210191D07A5040035CDA5 /* ViewController.swift */; };
 		3F62101D1D07A5040035CDA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F62101B1D07A5040035CDA5 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		32A2C947C06F9F0D87AAF596 /* Pods-GroceryLists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryLists.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroceryLists/Pods-GroceryLists.debug.xcconfig"; sourceTree = "<group>"; };
 		3F5F2FFD1D0A3E6900ABE777 /* TypingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingView.swift; sourceTree = "<group>"; };
+		3F5F2FFF1D0B77DF00ABE777 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3F6210141D07A5040035CDA5 /* GroceryLists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryLists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F6210171D07A5040035CDA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F6210191D07A5040035CDA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				3F62101B1D07A5040035CDA5 /* Main.storyboard */,
 				3F62101E1D07A5040035CDA5 /* Assets.xcassets */,
 				3F6210201D07A5040035CDA5 /* LaunchScreen.storyboard */,
+				3F5F2FFF1D0B77DF00ABE777 /* GoogleService-Info.plist */,
 				3F6210231D07A5040035CDA5 /* Info.plist */,
 				3F6210291D07A7920035CDA5 /* MyDataEntry.swift */,
 			);
@@ -158,6 +161,7 @@
 				3F6210221D07A5040035CDA5 /* LaunchScreen.storyboard in Resources */,
 				3F62101F1D07A5040035CDA5 /* Assets.xcassets in Resources */,
 				3F62101D1D07A5040035CDA5 /* Main.storyboard in Resources */,
+				3F5F30001D0B77DF00ABE777 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

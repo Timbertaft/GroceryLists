@@ -32,8 +32,24 @@ class TypingView : UIViewController {
     }
     
     
+    // MARK: - Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "Save" {
+                let controller = segue.destinationViewController as! ViewController
+                controller.list = self.list
+            viewDidLoad()
+                /*let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
+                 controller.detailItem = object
+                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                 controller.navigationItem.leftItemsSupplementBackButton = true */
+            }
+        
+    }
+    
     
     @IBAction func SaveAction(sender: AnyObject) {
+        
     }
     
     

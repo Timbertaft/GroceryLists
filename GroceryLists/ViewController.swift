@@ -11,8 +11,8 @@ import Firebase
 
 class ViewController: UITableViewController {
     
-    
-    var objects = [MyDateEntry]()
+    var list = [String]()
+    var objects = [String]()
     
     var ref : FIRDatabaseReference?
     
@@ -22,14 +22,16 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //self.navigationItem.rightBarButtonItem =
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        insertNewObject(_:self)
         /*let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(insertNewObject(_:)))
+         
         self.navigationItem.rightBarButtonItem = addButton
         /*if let split = self.splitViewController {
             let controllers = split.viewControllersS
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         self.ref = FIRDatabase.database().reference()*/*/
-        
+        self.ref = FIRDatabase.database().reference()
     }
     
     //    override func viewWillAppear(animated: Bool) {
@@ -40,22 +42,24 @@ class ViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         //self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
+        
+        objects.appendContentsOf(list)
         // read from this format yyyy-MM-dd HH:mm:ssZZ
-        //self.ref!.child("my-entries").observeEventType(.Value, withBlock: { snapshot in
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd HH:mm:ssZZ"
-        dateStringFormatter.timeZone = NSTimeZone(name: "UTC")
-        var newEntries = [MyDateEntry]()
-        /*if let postDict = snapshot.value as? [String : AnyObject] {
-            for (key,val) in postDict.enumerate() {
-                print("key = \(key) and val = \(val)")
-                let entry = MyDateEntry(snapshot: val.1 as! Dictionary<String,AnyObject>)
-                newEntries.append(entry)
+        let dummy = self.ref!.child("my-entries")
+        self.ref!.child("my-entries").observeEventType(.Value, withBlock: { snapshot in
+            var newEntries = [String]()
+            
+            if let postDict = snapshot.value as? [String : AnyObject] {
+                for (key,val) in postDict.enumerate() {
+                    print("key = \(key) and val = \(val.1)")
+                    let str = val.1
+                    newEntries.append(str as! String)
+                }
+                self.objects = newEntries
+                self.objects.sortInPlace({ $0.compare($1) == NSComparisonResult.OrderedDescending })
+                self.tableView.reloadData()
             }
-            self.objects = newEntries
-            //self.objects.sortInPlace({ $0.compare($1) == NSComparisonResult.OrderedDescending })
-            self.tableView.reloadData()
-        }*/
+        })
     }
     
 
@@ -74,11 +78,19 @@ class ViewController: UITableViewController {
     //    }
     
     func insertNewObject(sender: AnyObject) {
-        let entry = MyDateEntry(name: "iPhone", date: NSDate())
-        objects.insert(entry, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        self.ref?.child("my-entries").child(entry.date!.description).setValue(entry.toAnyObject())
+        //let entry = MyItemEntry(name: "iPhone", item: String)
+        self.ref = FIRDatabase.database().reference()
+        for entry in list {
+            objects.insert(entry, atIndex: 0)
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            //self.ref?.child("my-entries").child(entry).setValue(entry)
+            let childRef = self.ref?.child("my-entries")
+            let idontknow = childRef!.child(entry)
+            idontknow.setValue(entry)
+        }
+        
+
     }
     
     
@@ -111,8 +123,8 @@ class ViewController: UITableViewController {
         
         
         let object = objects[indexPath.row]
-        cell.textLabel!.text = object.date.description
-        cell.detailTextLabel!.text = object.name
+        cell.textLabel!.text = object
+      //  cell.detailTextLabel!.text = object.name
         return cell
         
         
@@ -127,7 +139,7 @@ class ViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let entry = self.objects[indexPath.row]
-            self.ref?.child("my-entries").child(entry.date.description).removeValue()
+            self.ref?.child("my-entries").child(entry).removeValue()
         }
 }
 }
