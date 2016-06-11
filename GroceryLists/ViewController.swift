@@ -44,9 +44,7 @@ class ViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         objects.appendContentsOf(list)
-        // read from this format yyyy-MM-dd HH:mm:ssZZ
-        let dummy = self.ref!.child("my-entries")
-        self.ref!.child("my-entries").observeEventType(.Value, withBlock: { snapshot in
+           self.ref!.child("my-entries").observeEventType(.Value, withBlock: { snapshot in
             var newEntries = [String]()
             
             if let postDict = snapshot.value as? [String : AnyObject] {
@@ -84,10 +82,10 @@ class ViewController: UITableViewController {
             objects.insert(entry, atIndex: 0)
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            //self.ref?.child("my-entries").child(entry).setValue(entry)
-            let childRef = self.ref?.child("my-entries")
+            self.ref?.child("my-entries").child(entry).setValue(entry)
+            /*let childRef = self.ref?.child("my-entries")
             let idontknow = childRef!.child(entry)
-            idontknow.setValue(entry)
+            idontknow.setValue(entry)*/
         }
         
 
@@ -137,6 +135,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        self.ref = FIRDatabase.database().reference()
         if editingStyle == .Delete {
             let entry = self.objects[indexPath.row]
             self.ref?.child("my-entries").child(entry).removeValue()

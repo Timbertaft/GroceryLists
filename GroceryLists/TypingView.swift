@@ -22,12 +22,22 @@ class TypingView : UIViewController {
     
     
     @IBAction func AddMoreAction(sender: AnyObject) {
-        list.append(GroceryField.text!)
-        TextUpdate.text = ""
-        GroceryField.text = ""
-        for item in list {
-        TextUpdate.text.appendContentsOf(item + "\r\n")
-        
+        // If(GroceryField.text?.isEmpty || GroceryField.text = " ")
+        let whitespaceSet = NSCharacterSet.whitespaceCharacterSet()
+        if GroceryField.text!.stringByTrimmingCharactersInSet(whitespaceSet) != "" {
+            // string contains non-whitespace characters
+            list.append(GroceryField.text!)
+            TextUpdate.text = ""
+            GroceryField.text = ""
+            for item in list {
+                TextUpdate.text.appendContentsOf(item + "\r\n")
+                
+            }
+            
+        }
+        else {
+            GroceryField.placeholder = "Not valid.  Please enter a new value"
+            GroceryField.text = ""
         }
     }
     
